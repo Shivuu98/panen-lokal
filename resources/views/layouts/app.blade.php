@@ -8,7 +8,7 @@
 <body class="bg-gray-50 text-gray-800">
     <nav class="bg-green-600 text-white p-4">
         <div class="container mx-auto flex justify-between">
-            <a href="/" class="font-bold text-xl">🌾 PanenKu</a>
+            <a href="/" class="font-bold text-xl">🌾 PanenLokal</a>
             <div>
                 <a href="/" class="mr-4 hover:underline">Beranda</a>
                 <a href="/komoditas" class="hover:underline">Komoditas</a>
