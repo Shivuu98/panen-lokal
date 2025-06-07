@@ -1,36 +1,57 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Komoditas - {{ $komoditas->nama }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-gray-100 text-gray-800">
 
-@section('content')
-<h1 class="text-2xl font-bold mb-4">Detail Komoditas: {{ $komoditas->nama }}</h1>
+    <!-- Header -->
+    <header class="bg-green-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Info Tani Lokal</h1>
+            <nav>
+                <a href="{{ url('/') }}" class="mx-2 hover:underline">Beranda</a>
+                <a href="{{ url('/komoditas') }}" class="mx-2 hover:underline">Komoditas</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="bg-white shadow p-6 rounded mb-6">
-    <h1>{{ $komoditas->nama }}</h1>
-    <p>Musim Panen: {{ implode(', ', $komoditas->musim_panen) }}</p>
+    <!-- Detail Komoditas -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-2xl font-bold mb-2">{{ $komoditas->nama }}</h2>
+            <p class="mb-4 text-gray-600">
+                <span class="font-semibold">Musim Panen:</span>
+                {{ implode(', ', $komoditas->musim_panen) }}
+            </p>
 
-    <p><strong>Harga Bulan Ini:</strong> Rp {{ number_format($komoditas->harga_bulan_ini) }}/kg</p>
-</div>
+            <h3 class="text-lg font-semibold mt-6 mb-2">Harga per Bulan</h3>
+            <table class="w-full table-auto border text-sm">
+                <thead>
+                    <tr class="bg-green-100">
+                        <th class="border px-4 py-2">Bulan</th>
+                        <th class="border px-4 py-2">Harga (Rp)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($komoditas->harga_bulanan as $bulan => $harga)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $bulan }}</td>
+                            <td class="border px-4 py-2">Rp {{ number_format($harga, 0, ',', '.') }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </main>
 
-<h2 class="text-xl font-semibold mb-2">Harga per Bulan</h2>
-<table class="w-full bg-white shadow rounded mb-6">
-    <thead>
-        <tr class="bg-gray-100 text-left">
-            <th class="p-3">Bulan</th>
-            <th class="p-3">Harga (Rp)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($harga_bulanan as $bulan => $harga)
-        <tr class="border-t">
-            <td class="p-3">{{ $bulan }}</td>
-            <td class="p-3">Rp {{ number_format($harga) }}/kg</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+    <!-- Footer -->
+    <footer class="bg-green-600 text-white p-4 mt-12 text-center">
+        &copy; {{ date('Y') }} Info Tani Lokal.
+    </footer>
 
-<!-- Placeholder chart -->
-<div class="bg-white p-4 rounded shadow">
-    <p class="mb-2 font-medium">[Grafik Harga per Bulan Placeholder]</p>
-    <!-- Bisa pakai Chart.js di sini jika mau -->
-</div>
-@endsection
+</body>
+</html>
