@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register - AgriFlow</title>
+    <title>Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-cover bg-center flex items-center justify-center"
       style="background-image: url('{{ asset('images/background-sawah.jpeg') }}');">
 
     <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-6 text-center">Daftar Akun AgriFlow</h2>
+        <h2 class="text-2xl font-bold mb-6 text-center">Daftar Akun</h2>
 
         @if ($errors->any())
             <div class="text-red-500 mb-4">
