@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Daftar Komoditas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 text-gray-800">
+@extends('layout')
 
-    <header class="bg-green-600 text-white p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">Info Komoditas</h1>
-            <nav>
-                <a href="{{ url('/') }}" class="mx-2 hover:underline">Beranda</a>
-                <a href="{{ url('/komoditas') }}" class="mx-2 hover:underline font-semibold">Komoditas</a>
-                <a href="{{ url('/login') }}" class="mx-2 hover:underline">Login</a>
-            </nav>
-        </div>
-    </header>
+@section('content')
 
     <main class="container mx-auto px-4 py-8">
         <h2 class="text-2xl font-bold mb-6">Daftar Komoditas</h2>
@@ -35,9 +18,4 @@
         </div>
     </main>
 
-    <footer class="bg-green-600 text-white p-4 mt-12 text-center">
-        &copy; {{ date('Y') }} Info Tani Lokal. Semua hak dilindungi.
-    </footer>
-
-</body>
-</html>
+@endsection
