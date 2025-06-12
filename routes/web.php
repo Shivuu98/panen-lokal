@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KomoditasController;
+use App\Http\Controllers\AdminKomoditasController;
 
 // Public (tanpa login)
 Route::get('/', [KomoditasController::class, 'home']); // Tambahkan route home ke public
@@ -17,4 +18,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/komoditas', [KomoditasController::class, 'index']);
     Route::get('/komoditas/{id}', [KomoditasController::class, 'show']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('komoditas', AdminKomoditasController::class);
 });

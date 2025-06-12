@@ -9,7 +9,9 @@
             @foreach ($komoditas as $item)
                 <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition">
                     <h3 class="text-xl font-semibold mb-2">{{ $item->nama }}</h3>
-                    <p class="text-gray-600 mb-1">Musim Panen: {{ implode(', ', $item->musim_panen) }}</p>
+                    <p class="text-gray-600 mb-1">
+                        Musim Panen: {{ implode(', ', $item->musimPanen->pluck('bulan')->toArray()) }}
+                    </p>
                     <a href="{{ url('/komoditas/' . $item->id) }}" class="text-green-600 hover:underline mt-2 inline-block">
                         Lihat Detail Harga
                     </a>

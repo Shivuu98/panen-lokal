@@ -4,6 +4,7 @@
         <nav class="flex items-center space-x-4">
             <a href="{{ url('/') }}" class="font-bold hover:underline text-xl">Beranda</a>
             <a href="{{ url('/komoditas') }}" class="font-bold hover:underline text-xl">Komoditas</a>
+            <a href="">Artikel</a>
 
             @auth
                 <form method="POST" action="{{ route('logout') }}">
