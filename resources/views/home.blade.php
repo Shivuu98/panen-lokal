@@ -38,6 +38,12 @@
                             Lihat fluktuasi harga komoditas pertanian berdasarkan bulan dan musim.
                         </p>
                     </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 max-w-sm mx-auto w-full transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                        <h4 class="text-xl font-bold mb-2">Artikel</h4>
+                        <p class="text-gray-600">
+                            Dapatkan informasi tentang berita seputar komoditas terbaru.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
