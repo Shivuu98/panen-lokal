@@ -31,9 +31,6 @@
         </form>
 
         <div class="flex flex-col space-y-4 mt-4">
-            <a href="{{ url('/') }}" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition text-center">
-                Masuk Sebagai Tamu
-            </a>
             <p class="text-sm text-center text-gray-700">
                 Belum punya akun?
                 <a href="/register" class="text-blue-600 underline">Daftar di sini</a>

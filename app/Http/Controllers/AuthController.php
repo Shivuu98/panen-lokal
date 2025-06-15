@@ -21,14 +21,16 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
+        if (auth()->attempt($credentials)) {
+            $user = auth()->user();
+            if ($user->role === 'admin') {
+                return redirect('/admin');
+            } else {
+                return redirect('/'); // atau route homepage user
+            }
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ]);
+        return back()->withErrors(['email' => 'Email atau password salah']);
     }
 
     public function showRegister()
