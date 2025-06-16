@@ -90,10 +90,8 @@
 <body class="min-h-screen bg-cover bg-center flex items-center justify-center relative py-4 px-4 sm:py-8"
       style="background-image: url('{{ asset('images/background-sawah.jpeg') }}');">
 
-    <!-- Background Overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-40"></div>
 
-    <!-- Floating Elements -->
     <div class="floating-elements"></div>
 
     <!-- Main Login Container -->
@@ -172,9 +170,6 @@
                         <input type="checkbox" name="remember" class="mr-2 rounded border-green-300 text-harvest-green-500 focus:ring-harvest-green-400">
                         <span>Ingat saya</span>
                     </label>
-                    <a href="/forgot-password" class="text-green-300 hover:text-white transition-colors duration-200 hover:underline">
-                        Lupa password?
-                    </a>
                 </div>
 
                 <!-- Login Button -->

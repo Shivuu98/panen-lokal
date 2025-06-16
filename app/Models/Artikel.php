@@ -10,4 +10,9 @@ class Artikel extends Model
     use HasFactory;
 
     protected $fillable = ['judul', 'isi', 'penulis'];
+
+    public function komentars()
+    {
+        return $this->hasMany(Komentar::class);
+    }
 }
