@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Komoditas extends Model
 {
-    protected $fillable = ['nama', 'deskripsi'];
+    protected $fillable = ['nama', 'deskripsi', 'daerah'];
 
     public function musimPanen()
     {

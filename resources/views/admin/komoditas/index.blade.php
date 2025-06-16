@@ -23,6 +23,7 @@
             <thead class="bg-green-600">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Nama</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Daerah</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Deskripsi</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Aksi</th>
                 </tr>
@@ -32,6 +33,9 @@
                 <tr class="hover:bg-green-50 transition">
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="font-medium text-green-900">{{ $item->nama }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-green-700">{{ $item->daerah }}</div>
                     </td>
                     <td class="px-6 py-4">
                         <div class="text-green-700">{{ $item->deskripsi }}</div>

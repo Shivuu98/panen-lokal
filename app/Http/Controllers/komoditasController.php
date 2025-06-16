@@ -29,17 +29,28 @@ class KomoditasController extends Controller
         return $bulan[$now];
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $bulanIni = $this->getCurrentMonth();
 
-        $komoditas = Komoditas::with(['musimPanen', 'harga'])->get()->map(function ($item) use ($bulanIni) {
+        // Ambil daftar daerah unik
+        $daerahList = Komoditas::select('daerah')->distinct()->pluck('daerah')->filter()->values();
+
+        // Query komoditas
+        $query = Komoditas::with(['musimPanen', 'harga']);
+
+        // Filter berdasarkan daerah jika ada
+        if ($request->filled('daerah')) {
+            $query->where('daerah', $request->daerah);
+        }
+
+        $komoditas = $query->get()->map(function ($item) use ($bulanIni) {
             $item->is_panen_bulan_ini = $item->musimPanen->pluck('bulan')->contains($bulanIni);
             $item->harga_bulan_ini = optional($item->harga->firstWhere('bulan', $bulanIni))->harga;
             return $item;
         });
 
-        return view('komoditas.index', compact('komoditas'));
+        return view('komoditas.index', compact('komoditas', 'daerahList'));
     }
 
     public function show($id)
