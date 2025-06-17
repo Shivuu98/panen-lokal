@@ -16,4 +16,17 @@ class KomentarController extends Controller
         ]);
         return back()->with('success', 'Komentar berhasil ditambahkan!');
     }
+    public function destroy($id)
+    {
+        $komentar = \App\Models\Komentar::findOrFail($id);
+
+        // Hanya admin yang boleh hapus
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized');
+        }
+
+        $komentar->delete();
+
+        return back()->with('success', 'Komentar berhasil dihapus!');
+    }
 }

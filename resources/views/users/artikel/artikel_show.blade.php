@@ -6,7 +6,7 @@
     <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-10">
         <h2 class="text-4xl font-bold text-gray-800 mb-3">{{ $artikel->judul }}</h2>
         <div class="text-sm text-gray-500 mb-6">
-            Penulis: <span class="font-medium text-gray-700">{{ $artikel->penulis ?? 'Admin' }}</span> 
+            Penulis: <span class="font-medium text-gray-700">{{ $artikel->penulis ?? 'Admin' }}</span>
             &bull; {{ $artikel->created_at->format('d M Y') }}
         </div>
         <div class="prose prose-lg max-w-none text-gray-800 mb-8">{!! $artikel->isi !!}</div>
@@ -27,6 +27,15 @@
                     <span class="text-xs text-gray-500">
                         {{ $komentar->created_at->format('d M Y H:i') }}
                     </span>
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <form action="{{ route('komentar.destroy', $komentar->id) }}" method="POST" onsubmit="return confirm('Yakin hapus komentar ini?')" class="inline ml-2">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 text-xs hover:underline">Hapus</button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
                 <p class="text-gray-700 text-sm">{{ $komentar->isi }}</p>
             </div>
