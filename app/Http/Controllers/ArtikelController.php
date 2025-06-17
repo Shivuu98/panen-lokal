@@ -10,12 +10,12 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikels = Artikel::latest()->paginate(6);
-        return view('artikel', compact('artikels'));
+        return view('users.artikel.artikel', compact('artikels'));
     }
 
     public function show($id)
     {
         $artikel = Artikel::findOrFail($id);
-        return view('artikel_show', compact('artikel'));
+        return view('users.artikel.artikel_show', compact('artikel'));
     }
 }

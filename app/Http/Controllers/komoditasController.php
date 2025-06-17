@@ -50,7 +50,7 @@ class KomoditasController extends Controller
             return $item;
         });
 
-        return view('komoditas.index', compact('komoditas', 'daerahList'));
+        return view('users.komoditas.index', compact('komoditas', 'daerahList'));
     }
 
     public function show($id)
@@ -61,7 +61,7 @@ class KomoditasController extends Controller
         $komoditas->harga_bulan_ini = optional($komoditas->harga->firstWhere('bulan', $bulanIni))->harga;
         $harga_bulanan = $komoditas->harga->pluck('harga', 'bulan');
 
-        return view('komoditas.show', [
+        return view('users.komoditas.show', [
             'komoditas' => $komoditas,
             'harga_bulanan' => $harga_bulanan
         ]);
