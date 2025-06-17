@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/artikel', [\App\Http\Controllers\ArtikelController::class, 'index']);
 Route::get('/artikel/{id}', [\App\Http\Controllers\ArtikelController::class, 'show']);
 Route::post('/artikel/{artikel}/komentar', [\App\Http\Controllers\KomentarController::class, 'store'])->name('komentar.store');
+Route::delete('/komentar/{id}', [App\Http\Controllers\KomentarController::class, 'destroy'])->name('komentar.destroy');
 
 // Untuk admin (CRUD)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
