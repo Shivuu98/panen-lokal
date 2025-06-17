@@ -1,86 +1,114 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Komoditas - Info Tani Lokal</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-green-50 min-h-screen">
 @extends('admin.layout')
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-green-100 p-6">
-        <h2 class="text-2xl font-bold text-green-800 mb-6">Tambah Komoditas Baru</h2>
+<div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Tambah Komoditas Baru</h1>
+        <p class="text-gray-600">Lengkapi informasi komoditas pertanian yang akan didaftarkan</p>
+    </div>
 
-        <form action="{{ route('admin.komoditas.store') }}" method="POST" class="space-y-4">
+    <!-- Form Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <form action="{{ route('admin.komoditas.store') }}" method="POST" class="p-8 space-y-8">
             @csrf
 
-            <div>
-                <label class="block mb-1">Nama Komoditas</label>
-                <input type="text" name="nama"
-                       class="w-full border p-2 rounded focus:ring-2 focus:ring-green-200 focus:border-green-500"
-                       placeholder="Masukkan nama komoditas" required>
+            <!-- Basic Information -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-semibold text-gray-900 border-b border-gray-100 pb-3">
+                    Informasi Dasar
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Nama Komoditas
+                        </label>
+                        <input type="text" name="nama"
+                               class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                               placeholder="Contoh: Padi, Jagung, Cabai" required>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">
+                            Daerah Asal
+                        </label>
+                        <input type="text" name="daerah"
+                               class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                               placeholder="Contoh: Jember, Banyuwangi" required>
+                    </div>
+                </div>
+                
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">
+                        Deskripsi
+                    </label>
+                    <textarea name="deskripsi" rows="4" 
+                              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
+                              placeholder="Jelaskan karakteristik, keunggulan, dan informasi penting lainnya tentang komoditas ini..." required></textarea>
+                </div>
             </div>
 
-            <div>
-                <label class="block mb-1">Daerah</label>
-                <input type="text" name="daerah"
-                       class="w-full border p-2 rounded focus:ring-2 focus:ring-green-200 focus:border-green-500"
-                       placeholder="Masukkan daerah asal komoditas" required>
-            </div>
-
-            <div>
-                <label class="block mb-1">Deskripsi</label>
-                <textarea name="deskripsi" rows="4"
-                          class="w-full border p-2 rounded focus:ring-2 focus:ring-green-200 focus:border-green-500"
-                          placeholder="Masukkan deskripsi komoditas" required></textarea>
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-green-700 font-medium mb-2">Bulan Panen</label>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <!-- Harvest Months -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-semibold text-gray-900 border-b border-gray-100 pb-3">
+                    Bulan Panen
+                </h2>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                     @foreach(['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'] as $bulan)
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" name="bulan_panen[]" value="{{ $bulan }}"
-                                   class="h-5 w-5 text-green-600 rounded border-green-300 focus:ring-green-200">
-                            <span class="ml-2 text-green-700">{{ $bulan }}</span>
+                        <label class="relative flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors group">
+                            <input type="checkbox" name="bulan_panen[]" value="{{ $bulan }}" class="sr-only peer">
+                            <div class="w-5 h-5 border-2 border-gray-300 rounded-md peer-checked:bg-green-500 peer-checked:border-green-500 flex items-center justify-center transition-colors">
+                                <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-sm font-medium text-gray-700 group-hover:text-gray-900">{{ $bulan }}</span>
                         </label>
                     @endforeach
                 </div>
             </div>
 
-            <!-- Harga Komoditas per Bulan -->
-            <div class="mb-6">
-                <label class="block text-green-700 font-medium mb-4">Harga Komoditas per Bulan</label>
-                <div class="space-y-3">
-                    @foreach(['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'] as $bulan)
-                        <div class="flex items-center gap-4">
-                            <span class="w-24 text-green-700">{{ $bulan }}</span>
-                            <input type="hidden" name="harga[{{ $loop->index }}][bulan]" value="{{ $bulan }}">
-                            <div class="relative flex-1">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <span class="text-green-500">Rp</span>
+            <!-- Price Information -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-semibold text-gray-900">
+                        Harga per Bulan
+                    </h2>
+                    <button type="button" class="text-green-600 hover:text-green-700 font-medium text-sm" onclick="togglePriceSection()">
+                        <span id="priceToggleText">Tampilkan Semua</span>
+                    </button>
+                </div>
+                
+                <div id="priceSection" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        @foreach(['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'] as $bulan)
+                            <div class="flex items-center gap-3">
+                                <span class="w-20 text-sm font-medium text-gray-700">{{ $bulan }}</span>
+                                <input type="hidden" name="harga[{{ $loop->index }}][bulan]" value="{{ $bulan }}">
+                                <div class="relative flex-1">
+                                    <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">Rp</span>
+                                    <input type="number" name="harga[{{ $loop->index }}][harga]" 
+                                           class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" 
+                                           placeholder="0">
                                 </div>
-                                <input type="number" name="harga[{{ $loop->index }}][harga]" placeholder="0"
-                                       class="pl-10 w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-200 focus:border-green-500">
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
-            <!-- Submit Button -->
-            <div class="flex justify-end mt-8 space-x-4">
-                <a href="{{ route('admin.komoditas.index') }}"
-                   class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg shadow-md transition flex items-center">
+            <!-- Action Buttons -->
+            <div class="flex justify-end gap-4 pt-6 border-t border-gray-100">
+                <a href="{{ route('admin.komoditas.index') }}" 
+                   class="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-medium">
                     Batal
                 </a>
-                <button type="submit"
-                        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow-md transition flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                <button type="submit" 
+                        class="px-8 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors font-medium flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
                     Simpan Komoditas
                 </button>
@@ -88,6 +116,19 @@
         </form>
     </div>
 </div>
+
+<script>
+    function togglePriceSection() {
+        const section = document.getElementById('priceSection');
+        const toggleText = document.getElementById('priceToggleText');
+        
+        if (section.classList.contains('hidden')) {
+            section.classList.remove('hidden');
+            toggleText.textContent = 'Sembunyikan';
+        } else {
+            section.classList.add('hidden');
+            toggleText.textContent = 'Tampilkan Semua';
+        }
+    }
+</script>
 @endsection
-</body>
-</html>
