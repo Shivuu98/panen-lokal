@@ -62,9 +62,9 @@
                             Ketahui bulan-bulan panen utama setiap komoditas pertanian di wilayah lokal dengan data yang akurat dan terpercaya.
                         </p>
                         <div class="mt-6 text-center">
-                            <span class="inline-flex items-center text-green-600 font-semibold text-sm group-hover:text-green-700">
+                            <a href="{{ url('/komoditas') }}" class="inline-flex items-center text-green-600 font-semibold text-sm group-hover:text-green-700 transition-colors duration-200">
                                 Pelajari lebih lanjut →
-                            </span>
+                            </a>
                         </div>
                     </div>
 
@@ -81,9 +81,9 @@
                             Lihat fluktuasi harga komoditas pertanian berdasarkan bulan dan musim untuk perencanaan bisnis yang lebih baik.
                         </p>
                         <div class="mt-6 text-center">
-                            <span class="inline-flex items-center text-yellow-600 font-semibold text-sm group-hover:text-yellow-700">
+                            <a href="{{ url('/komoditas') }}" class="inline-flex items-center text-yellow-600 font-semibold text-sm group-hover:text-yellow-700">
                                 Lihat grafik harga →
-                            </span>
+                            </a>
                         </div>
                     </div>
 
@@ -100,9 +100,9 @@
                             Dapatkan informasi terbaru seputar perkembangan komoditas, tips pertanian, dan berita terkini dari dunia agrikultur.
                         </p>
                         <div class="mt-6 text-center">
-                            <span class="inline-flex items-center text-blue-600 font-semibold text-sm group-hover:text-blue-700">
+                            <a href="{{ url('/artikel') }}" class="inline-flex items-center text-blue-600 font-semibold text-sm group-hover:text-blue-700">
                                 Baca artikel →
-                            </span>
+                            </a>
                         </div>
                     </div>
                 </div>

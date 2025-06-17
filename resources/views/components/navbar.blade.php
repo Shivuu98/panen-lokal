@@ -1,5 +1,5 @@
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
-        <div class="nav-blur mx-4 mt-4 rounded-2xl shadow-2xl border border-white/10">
+        <div class="nav-blur bg-black mx-4 mt-4 rounded-2xl shadow-2xl border border-white/10">
             <div class="container mx-auto px-8 py-4">
                 <div class="flex justify-between items-center">
                     <!-- Logo Section -->
@@ -83,6 +83,10 @@
                 <a href="{{ url('/') }}" class="block text-white font-medium hover:text-green-300 transition-colors">Beranda</a>
                 <a href="{{ url('/komoditas') }}" class="block text-white font-medium hover:text-green-300 transition-colors">Komoditas</a>
                 <a href="{{ url('/login') }}" class="block bg-gradient-custom text-white font-semibold py-3 px-6 rounded-xl text-center hover-scale">Login</a>
+            </div>
+        </div>
+    </header>
+ text-center hover-scale">Login</a>
             </div>
         </div>
     </header>

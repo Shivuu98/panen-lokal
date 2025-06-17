@@ -10,8 +10,8 @@
                 <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V9a1 1 0 00-1-1h-1v3a2 2 0 01-2 2H4.5a1.5 1.5 0 010-3H9V7H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2z" />
             </svg>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Artikel Terkini</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Dapatkan informasi terbaru seputar pertanian, komoditas, dan perkembangan industri agrikultur</p>
+        <h2 class="text-4xl md:text-5xl font-bold text-blue-300 mb-4">Artikel Terkini</h2>
+        <p class="text-xl text-white max-w-2xl mx-auto">Dapatkan informasi terbaru seputar pertanian, komoditas, dan perkembangan industri agrikultur</p>
         <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mt-6"></div>
     </div>
 
