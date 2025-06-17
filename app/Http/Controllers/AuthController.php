@@ -66,4 +66,28 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
+
+    public function showEditProfile()
+    {
+        $user = auth()->user();
+        return view('auth.edit-profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'password' => 'nullable|string|min:6|confirmed',
+        ]);
+
+        $user->name = $request->name;
+        if ($request->password) {
+            $user->password = \Hash::make($request->password);
+        }
+        $user->save();
+
+        return back()->with('success', 'Profil berhasil diupdate!');
+    }
 }

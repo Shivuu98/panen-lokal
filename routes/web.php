@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/komoditas', [KomoditasController::class, 'index']);
     Route::get('/komoditas/{id}', [KomoditasController::class, 'show']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile/edit', [AuthController::class, 'showEditProfile'])->name('profile.edit');
+    Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('profile.update');
 });
 
 // Untuk user (read only)

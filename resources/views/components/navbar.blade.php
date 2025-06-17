@@ -1,4 +1,4 @@
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
         <div class="nav-blur mx-4 mt-4 rounded-2xl shadow-2xl border border-white/10">
             <div class="container mx-auto px-8 py-4">
                 <div class="flex justify-between items-center">
@@ -49,6 +49,7 @@
                                     @if(Auth::user()->role === 'admin')
                                         <a href="{{ url('/admin') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard Admin</a>
                                     @endif
+                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</a>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <button class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
